@@ -1,13 +1,141 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --white: white;
+  --red: red;
+  --orange: orange;
+  --yellow: yellow;
+  --green: green;
+  --blue: blue;
+  --purple: purple;
+}
+
+body {
+  background: #2c2c2c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case {
+  padding: 2px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.25s;
+}
+
+.case.white {
+  color: var(--white);
+}
+
+.case.red {
+  color: var(--red);
+}
+
+.case.orange {
+  color: var(--orange);
+}
+
+.case.yellow {
+  color: var(--yellow);
+}
+
+.case.green {
+  color: var(--green);
+}
+
+.case.blue {
+  color: var(--blue);
+}
+
+.case.purple {
+  color: var(--purple);
+}
+
+.case::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  bottom: 0px;
+  right: 0px;
+  box-shadow: -10px -10px 10px;
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row .flex1 {
+  flex: 1;
+}
+
+.keycap {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #282828, #202020);
+  position: relative;
+  border: 2px solid #000000;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  box-shadow: 10px 10px 10px;
+  transition: 0.25s;
+}
+
+.keycap::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  bottom: 14px;
+  right: 12px;
+  background: linear-gradient(90deg, #232323, #4a4a4a);
+  border-radius: 8px;
+  box-shadow: -10px -10px 10px rgba(255, 255, 255, 0.25);
+  border-left: 1px solid #0004;
+  border-top: 1px solid #0004;
+  border-bottom: 1px solid #0004;
+}
+
+.keycap.orange {
+  background: linear-gradient(180deg, #bd6200, #723000) !important;
+}
+
+.keycap.orange::before {
+  background: linear-gradient(90deg, #833c00, #d37100) !important;
+}
+
+.keycap.capslock-active {
+  color: var(--red) !important;
+}
+
+.keycap i {
+  font-style: normal;
+  color: inherit;
+  position: relative;
+  font-size: 20px;
+  transform: translate(-8px, 8px);
+}
+
+.keycap i.font-small {
+  font-size: 16px;
+}
+
+.icon {
+  font-size: 24px;
 }
