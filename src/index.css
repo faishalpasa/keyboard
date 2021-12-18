@@ -30,6 +30,7 @@ body {
   position: relative;
   overflow: hidden;
   transition: 0.25s;
+  width: calc(80px * 16);
 }
 
 .case.white {
@@ -95,6 +96,7 @@ body {
   justify-content: center;
   box-shadow: 10px 10px 10px;
   transition: 0.25s;
+  outline: unset;
 }
 
 .keycap::before {
@@ -110,6 +112,11 @@ body {
   border-left: 1px solid #0004;
   border-top: 1px solid #0004;
   border-bottom: 1px solid #0004;
+}
+
+.keycap:active {
+  transform: translate(4px, 4px);
+  width: 76px px;
 }
 
 .keycap.orange {
@@ -134,6 +141,22 @@ body {
 
 .keycap i.font-small {
   font-size: 16px;
+}
+
+.keycap.page-up-key,
+.page-down-key {
+  text-align: left;
+}
+
+.keycap.capslock-key,
+.right-shift-key {
+  width: 140px;
+}
+
+.keycap.control-key,
+.option-key,
+.command-key {
+  width: 100px;
 }
 
 .icon {
