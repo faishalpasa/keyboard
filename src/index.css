@@ -13,6 +13,7 @@
   --yellow: yellow;
   --green: green;
   --blue: blue;
+  --turquoise: turquoise;
   --purple: purple;
 }
 
@@ -55,6 +56,10 @@ body {
 
 .case.blue {
   color: var(--blue);
+}
+
+.case.turquoise {
+  color: var(--turquoise);
 }
 
 .case.purple {
