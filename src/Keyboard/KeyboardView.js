@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   EmojiObjects as EmojiObjectsIcon,
   Crop as CropIcon,
@@ -10,286 +11,218 @@ import {
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
 } from '@material-ui/icons';
 
+import './Keyboard.css';
+import Keycap from './Keycap';
+
 const KeyboardView = ({
   color,
   handleChangeKeyboardColor,
-  handleToggleCapslock,
-  isCapslockActive,
+  handleKeyPress,
+  phrase,
 }) => {
   return (
-    <div className={`case ${color}`}>
-      <div className="row">
-        <button className="keycap orange">
-          <i>esc</i>
-        </button>
-        <button className="keycap">
-          <i>F1</i>
-        </button>
-        <button className="keycap">
-          <i>F2</i>
-        </button>
-        <button className="keycap">
-          <i>F3</i>
-        </button>
-        <button className="keycap">
-          <i>F4</i>
-        </button>
-        <button className="keycap">
-          <i>F5</i>
-        </button>
-        <button className="keycap">
-          <i>F6</i>
-        </button>
-        <button className="keycap">
-          <i>F7</i>
-        </button>
-        <button className="keycap">
-          <i>F8</i>
-        </button>
-        <button className="keycap">
-          <i>F9</i>
-        </button>
-        <button className="keycap">
-          <i>F10</i>
-        </button>
-        <button className="keycap">
-          <i>F11</i>
-        </button>
-        <button className="keycap">
-          <i>F12</i>
-        </button>
-        <button className="keycap">
-          <i>del</i>
-        </button>
-        <button className="keycap">
-          <i><CropIcon className='icon' /></i>
-        </button>
-        <button className="keycap" onMouseDown={handleChangeKeyboardColor}>
-          <i><EmojiObjectsIcon className='icon' /></i>
-        </button>
+    <>
+      <div className={`case ${color}`}>
+        <div className="row">
+          <Keycap className="orange" label="esc" />
+          <Keycap label="F1" />
+          <Keycap label="F2" />
+          <Keycap label="F3" />
+          <Keycap label="F4" />
+          <Keycap label="F5" />
+          <Keycap label="F6" />
+          <Keycap label="F7" />
+          <Keycap label="F8" />
+          <Keycap label="F9" />
+          <Keycap label="F10" />
+          <Keycap label="F11" />
+          <Keycap label="F12" />
+          <Keycap label={<CropIcon className='icon' />} />
+          <Keycap label="del" />
+          <Keycap label={<EmojiObjectsIcon className='icon' />} onMouseDown={handleChangeKeyboardColor} />
+        </div>
+
+        <div className="row">
+          <Keycap onKeyPress={handleKeyPress} label="` ~" code="Backquote" />
+          <Keycap onKeyPress={handleKeyPress} label="1 !" code="Digit1" />
+          <Keycap onKeyPress={handleKeyPress} label="2 @" code="Digit2" />
+          <Keycap onKeyPress={handleKeyPress} label="3 #" code="Digit3" />
+          <Keycap onKeyPress={handleKeyPress} label="4 $" code="Digit4" />
+          <Keycap onKeyPress={handleKeyPress} label="5 %" code="Digit5" />
+          <Keycap onKeyPress={handleKeyPress} label="6 ^" code="Digit6" />
+          <Keycap onKeyPress={handleKeyPress} label="7 &amp;" code="Digit7" />
+          <Keycap onKeyPress={handleKeyPress} label="8 *" code="Digit8" />
+          <Keycap onKeyPress={handleKeyPress} label="9 (" code="Digit9" />
+          <Keycap onKeyPress={handleKeyPress} label="0 )" code="Digit0" />
+          <Keycap onKeyPress={handleKeyPress} label="- _" code="Minus" />
+          <Keycap onKeyPress={handleKeyPress} label="= +" code="Equal" />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="flex1"
+            code="Backspace"
+            label={<KeyboardBackspaceIcon className="icon" />}        
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="page-up-key"
+            code="PageUp"
+            label={['page', 'up']}
+            labelClassName="font-small"        
+          />
+        </div>
+
+        <div className="row">
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="flex1"
+            code="Tab"
+            label="tab"
+            labelClassName="font-small"        
+          />
+          <Keycap onKeyPress={handleKeyPress} label="Q" code="KeyQ" />
+          <Keycap onKeyPress={handleKeyPress} label="W" code="KeyW" />
+          <Keycap onKeyPress={handleKeyPress} label="E" code="KeyE" />
+          <Keycap onKeyPress={handleKeyPress} label="R" code="KeyR" />
+          <Keycap onKeyPress={handleKeyPress} label="T" code="KeyT" />
+          <Keycap onKeyPress={handleKeyPress} label="Y" code="KeyY" />
+          <Keycap onKeyPress={handleKeyPress} label="U" code="KeyU" />
+          <Keycap onKeyPress={handleKeyPress} label="I" code="KeyI" />
+          <Keycap onKeyPress={handleKeyPress} label="O" code="KeyO" />
+          <Keycap onKeyPress={handleKeyPress} label="P" code="KeyP" />
+          <Keycap onKeyPress={handleKeyPress} label="[ {" code="BracketLeft" />
+          <Keycap onKeyPress={handleKeyPress} label="] }" code="BracketRight" />
+          <Keycap onKeyPress={handleKeyPress} label="\ |" code="Backslash" className="flex1" />
+          <Keycap onKeyPress={handleKeyPress}
+            className="page-down-key"
+            code="PageDown"
+            label={['page', 'down']}
+            labelClassName="font-small"        
+          />
+        </div>
+
+        <div className="row">
+          <Keycap onKeyPress={handleKeyPress}
+            className="capslock-key"
+            code="CapsLock"
+            label="capslock"
+            labelClassName="font-small"        
+          />
+          <Keycap onKeyPress={handleKeyPress} label="A" code="KeyA" />
+          <Keycap onKeyPress={handleKeyPress} label="S" code="KeyS" />
+          <Keycap onKeyPress={handleKeyPress} label="D" code="KeyD" />
+          <Keycap onKeyPress={handleKeyPress} label="F" code="KeyF" />
+          <Keycap onKeyPress={handleKeyPress} label="G" code="KeyG" />
+          <Keycap onKeyPress={handleKeyPress} label="H" code="KeyH" />
+          <Keycap onKeyPress={handleKeyPress} label="J" code="KeyJ" />
+          <Keycap onKeyPress={handleKeyPress} label="K" code="KeyK" />
+          <Keycap onKeyPress={handleKeyPress} label="L" code="KeyL" />
+          <Keycap onKeyPress={handleKeyPress} label="; :" code="Semicolon" />
+          <Keycap onKeyPress={handleKeyPress} label={`' "`} code="Quote" />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="flex1"
+            code="Enter"
+            label={<KeyboardReturnIcon className="icon" />}        
+          />
+          <Keycap onKeyPress={handleKeyPress} code="Home" label="home" labelClassName="font-small" />
+        </div>
+
+        <div className="row">
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="flex1"
+            code="ShiftLeft"
+            label="shift"
+            labelClassName="font-small"        
+          />
+          <Keycap onKeyPress={handleKeyPress} label="Z" code="KeyZ" />
+          <Keycap onKeyPress={handleKeyPress} label="X" code="KeyX" />
+          <Keycap onKeyPress={handleKeyPress} label="C" code="KeyC" />
+          <Keycap onKeyPress={handleKeyPress} label="V" code="KeyV" />
+          <Keycap onKeyPress={handleKeyPress} label="B" code="KeyB" />
+          <Keycap onKeyPress={handleKeyPress} label="N" code="KeyN" />
+          <Keycap onKeyPress={handleKeyPress} label="M" code="KeyM" />
+          <Keycap onKeyPress={handleKeyPress} label=", <" code="Comma" />
+          <Keycap onKeyPress={handleKeyPress} label=". >" code="Period" />
+          <Keycap onKeyPress={handleKeyPress} label="/ ?" code="Slash" />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="right-shift-key"
+            code="ShiftRight"
+            label="shift"
+            labelClassName="font-small"        
+          />
+          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowUpIcon className="icon" />} code="ArrowUp" />
+          <Keycap onKeyPress={handleKeyPress} label="end" code="End" labelClassName="font-small" />
+        </div>
+
+        <div className="row">
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="control-key"
+            code="ControlLeft"
+            label="control"
+            labelClassName="font-small"        
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="option-key"
+            code="AltLeft"
+            label="opt"
+            labelClassName="font-small"        
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="command-key"
+            code="MetaLeft"
+            label="cmd"
+            labelClassName="font-small"        
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="flex1"
+            code="Space"
+            label="____"
+            labelClassName="font-small"        
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            label="cmd"
+            code="MetaRight"
+            labelClassName="font-small"        
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            label="fn"
+            code=""
+            labelClassName="font-small"
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            className="control-key"
+            code="ControlRight"
+            label="control"
+            labelClassName="font-small"        
+          />
+          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowLeftIcon className="icon" />} code="ArrowLeft" />
+          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowDownIcon className="icon" />} code="ArrowDown" />
+          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowRightIcon className="icon" />} code="ArrowRight" />
+        </div>
       </div>
 
-      <div className="row">
-        <button className="keycap">
-          <i>` ~</i>
-        </button>
-        <button className="keycap">
-          <i>1 !</i>
-        </button>
-        <button className="keycap">
-          <i>2 @</i>
-        </button>
-        <button className="keycap">
-          <i>3 #</i>
-        </button>
-        <button className="keycap">
-          <i>4 $</i>
-        </button>
-        <button className="keycap">
-          <i>5 %</i>
-        </button>
-        <button className="keycap">
-          <i>6 ^</i>
-        </button>
-        <button className="keycap">
-          <i>7 &amp;</i>
-        </button>
-        <button className="keycap">
-          <i>8 *</i>
-        </button>
-        <button className="keycap">
-          <i>9 (</i>
-        </button>
-        <button className="keycap">
-          <i>0 )</i>
-        </button>
-        <button className="keycap">
-          <i>- _</i>
-        </button>
-        <button className="keycap">
-          <i>= +</i>
-        </button>
-        <button className="keycap flex1">
-          <i><KeyboardBackspaceIcon className="icon" /></i>
-        </button>
-        <button className="keycap page-up-key">
-          <i className="font-small">page <br/> up</i>
-        </button>
+      <div className="phrase">
+        <i>
+          {phrase}
+        </i>
       </div>
-
-      <div className="row">
-        <button className="keycap flex1">
-          <i className="font-small">tab</i>
-        </button>
-        <button className="keycap">
-          <i>Q</i>
-        </button>
-        <button className="keycap">
-          <i>W</i>
-        </button>
-        <button className="keycap">
-          <i>E</i>
-        </button>
-        <button className="keycap">
-          <i>R</i>
-        </button>
-        <button className="keycap">
-          <i>T</i>
-        </button>
-        <button className="keycap">
-          <i>Y</i>
-        </button>
-        <button className="keycap">
-          <i>U</i>
-        </button>
-        <button className="keycap">
-          <i>I</i>
-        </button>
-        <button className="keycap">
-          <i>O</i>
-        </button>
-        <button className="keycap">
-          <i>P</i>
-        </button>
-        <button className="keycap">
-          <i>[ &#123;</i>
-        </button>
-        <button className="keycap">
-          <i>] &#125;</i>
-        </button>
-        <button className="keycap flex1">
-          <i>\ |</i>
-        </button>
-        <button className="keycap page-down-key">
-          <i className="font-small">page <br/> down</i>
-        </button>
-      </div>
-
-      <div className="row">
-        <button
-          className={`keycap capslock-key ${isCapslockActive ? 'capslock-active' : ''}`}
-          onMouseDown={handleToggleCapslock}
-        >
-          <i className="font-small">caps lock</i>
-        </button>
-        <button className="keycap">
-          <i>A</i>
-        </button>
-        <button className="keycap">
-          <i>S</i>
-        </button>
-        <button className="keycap">
-          <i>D</i>
-        </button>
-        <button className="keycap">
-          <i>F</i>
-        </button>
-        <button className="keycap">
-          <i>G</i>
-        </button>
-        <button className="keycap">
-          <i>H</i>
-        </button>
-        <button className="keycap">
-          <i>J</i>
-        </button>
-        <button className="keycap">
-          <i>K</i>
-        </button>
-        <button className="keycap">
-          <i>L</i>
-        </button>
-        <button className="keycap">
-          <i>; :</i>
-        </button>
-        <button className="keycap">
-          <i>' "</i>
-        </button>
-        <button className="keycap flex1">
-          <i><KeyboardReturnIcon className="icon" /></i>
-        </button>
-        <button className="keycap">
-          <i className="font-small">home</i>
-        </button>
-      </div>
-
-      <div className="row">
-        <button className="keycap flex1">
-          <i className="font-small">shift</i>
-        </button>
-        <button className="keycap">
-          <i>Z</i>
-        </button>
-        <button className="keycap">
-          <i>X</i>
-        </button>
-        <button className="keycap">
-          <i>C</i>
-        </button>
-        <button className="keycap">
-          <i>V</i>
-        </button>
-        <button className="keycap">
-          <i>B</i>
-        </button>
-        <button className="keycap">
-          <i>N</i>
-        </button>
-        <button className="keycap">
-          <i>M</i>
-        </button>
-        <button className="keycap">
-          <i>, &#60;</i>
-        </button>
-        <button className="keycap">
-          <i>. &#62;</i>
-        </button>
-        <button className="keycap">
-          <i>/ ?</i>
-        </button>
-        <button className="keycap right-shift-key">
-          <i className="font-small">shift</i>
-        </button>
-        <button className="keycap">
-          <i><KeyboardArrowUpIcon className="icon" /></i>
-        </button>
-        <button className="keycap">
-          <i className="font-small">end</i>
-        </button>
-      </div>
-
-      <div className="row">
-        <button className="keycap control-key">
-          <i className="font-small">control</i>
-        </button>
-        <button className="keycap option-key">
-          <i className="font-small">opt</i>
-        </button>
-        <button className="keycap command-key">
-          <i className="font-small">cmd</i>
-        </button>
-        <button className="keycap flex1" />
-        <button className="keycap">
-          <i className="font-small">cmd</i>
-        </button>
-        <button className="keycap">
-          <i className="font-small">fn</i>
-        </button>
-        <button className="keycap">
-          <i className="font-small">control</i>
-        </button>
-        <button className="keycap">
-          <i><KeyboardArrowLeftIcon className="icon" /></i>
-        </button>
-        <button className="keycap">
-          <i><KeyboardArrowDownIcon className="icon" /></i>
-        </button>
-        <button className="keycap">
-          <i><KeyboardArrowRightIcon className="icon" /></i>
-        </button>
-      </div>
-    </div>
+    </>
   );
+};
+
+KeyboardView.propTypes = {
+  color: PropTypes.string,
+  handleChangeKeyboardColor: PropTypes.func,
+  handleKeyPress: PropTypes.func,
 };
 
 export default KeyboardView;

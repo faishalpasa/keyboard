@@ -1,0 +1,77 @@
+.keyboard-wrapper {
+  margin-top: 64px;
+}
+
+.case {
+  padding: 2px;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.15s;
+  width: calc(80px * 16);
+}
+
+.case.white {
+  color: var(--white);
+}
+
+.case.red {
+  color: var(--red);
+}
+
+.case.orange {
+  color: var(--orange);
+}
+
+.case.yellow {
+  color: var(--yellow);
+}
+
+.case.green {
+  color: var(--green);
+}
+
+.case.blue {
+  color: var(--blue);
+}
+
+.case.turquoise {
+  color: var(--turquoise);
+}
+
+.case.purple {
+  color: var(--purple);
+}
+
+.case::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 8px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.row .flex1 {
+  flex: 1;
+}
+
+.phrase {
+  margin-top: 64px;
+  text-align: center;
+}
+
+.phrase i {
+  font-style: normal;
+  color: inherit;
+  position: relative;
+  font-size: 32px;
+  color: #ffffff;
+}
