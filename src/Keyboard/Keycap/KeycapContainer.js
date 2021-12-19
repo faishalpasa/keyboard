@@ -1,7 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
-import { setItem } from '../../utils';
 
 import KeycapView from './KeycapView';
 
