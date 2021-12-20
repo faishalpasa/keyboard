@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import KeycapView from './KeycapView';
@@ -9,7 +9,7 @@ const sound = new Audio('/sound/gateron-blue.mp3');
 
 const KeycapContainer = props => {
   const { code, onKeyPress, onMouseDown } = props;
-  const { isFNActive, setIsFNActive, handleChangeKeyboardColor } = React.useContext(LightColorContext);
+  const { isFNActive, setIsFNActive, handleChangeKeyboardColor } = useContext(LightColorContext);
   const [isKeydown, setIsKeydown] = useState(false);
   const [isCapslockActive, setIsCapslockActive] = useState(false);
 

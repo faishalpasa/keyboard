@@ -67,17 +67,3 @@
 .row .flex1 {
   flex: 1;
 }
-
-.phrase {
-  margin: 64px auto;
-  text-align: center;
-  max-width: calc(80px * 16);
-}
-
-.phrase i {
-  font-style: normal;
-  color: inherit;
-  position: relative;
-  font-size: 32px;
-  color: #ffffff;
-}

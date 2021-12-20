@@ -14,6 +14,7 @@ import {
 import './Keyboard.css';
 import Info from './Info';
 import Keycap from './Keycap';
+import Phrase from './Phrase';
 
 export const LightColorContext = createContext(null);
 
@@ -230,11 +231,7 @@ const KeyboardView = ({
 
       <Info />
 
-      <div className="phrase">
-        <i>
-          {phrase}
-        </i>
-      </div>
+      <Phrase data={phrase} />
     </LightColorContext.Provider>
   );
 };

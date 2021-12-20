@@ -49,9 +49,10 @@ const KeyboardContainer = () => {
   }
 
   const contextValue = {
+    color,
+    handleChangeKeyboardColor,
     isFNActive,
     setIsFNActive,
-    handleChangeKeyboardColor,
   }
 
   const viewProps = {
