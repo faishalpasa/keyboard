@@ -1,1 +1,1 @@
-export { default } from './KeyboardContainer'
+export { default } from './KeyboardContainer';

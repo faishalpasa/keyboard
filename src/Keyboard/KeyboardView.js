@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   EmojiObjects as EmojiObjectsIcon,
@@ -12,17 +12,22 @@ import {
 } from '@material-ui/icons';
 
 import './Keyboard.css';
+import Info from './Info';
 import Keycap from './Keycap';
+
+export const LightColorContext = createContext(null);
 
 const KeyboardView = ({
   color,
-  handleChangeKeyboardColor,
+  contextValue,
   handleKeyPress,
+  handleToggleKeyboardLight,
+  isLightOn,
   phrase,
 }) => {
   return (
-    <>
-      <div className={`case ${color}`}>
+    <LightColorContext.Provider value={contextValue}>
+      <div className={`case ${color} ${isLightOn ? '' : 'transparent'}`}>
         <div className="row">
           <Keycap className="orange" label="esc" />
           <Keycap label="F1" />
@@ -37,9 +42,9 @@ const KeyboardView = ({
           <Keycap label="F10" />
           <Keycap label="F11" />
           <Keycap label="F12" />
-          <Keycap label={<CropIcon className='icon' />} />
+          <Keycap label={<CropIcon fontSize="inherit" />} />
           <Keycap label="del" />
-          <Keycap label={<EmojiObjectsIcon className='icon' />} onMouseDown={handleChangeKeyboardColor} />
+          <Keycap label={<EmojiObjectsIcon fontSize="inherit" />} onMouseDown={handleToggleKeyboardLight} />
         </div>
 
         <div className="row">
@@ -193,8 +198,9 @@ const KeyboardView = ({
           />
           <Keycap
             onKeyPress={handleKeyPress}
+            className="fn-key"
             label="fn"
-            code=""
+            code="FN"
             labelClassName="font-small"
           />
           <Keycap
@@ -204,25 +210,42 @@ const KeyboardView = ({
             label="control"
             labelClassName="font-small"        
           />
-          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowLeftIcon className="icon" />} code="ArrowLeft" />
-          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowDownIcon className="icon" />} code="ArrowDown" />
-          <Keycap onKeyPress={handleKeyPress} label={<KeyboardArrowRightIcon className="icon" />} code="ArrowRight" />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            label={<KeyboardArrowLeftIcon className="icon" />}
+            code="ArrowLeft"
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            label={<KeyboardArrowDownIcon className="icon" />}
+            code="ArrowDown"
+          />
+          <Keycap
+            onKeyPress={handleKeyPress}
+            label={<KeyboardArrowRightIcon className="icon" />}
+            code="ArrowRight"
+          />
         </div>
       </div>
+
+      <Info />
 
       <div className="phrase">
         <i>
           {phrase}
         </i>
       </div>
-    </>
+    </LightColorContext.Provider>
   );
 };
 
 KeyboardView.propTypes = {
   color: PropTypes.string,
+  contextValue: PropTypes.shape({}),
   handleChangeKeyboardColor: PropTypes.func,
   handleKeyPress: PropTypes.func,
+  handleToggleKeyboardLight: PropTypes.func,
+  isLightOn: PropTypes.bool,
 };
 
 export default KeyboardView;

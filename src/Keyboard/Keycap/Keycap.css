@@ -54,11 +54,6 @@
   width: 76px;
 }
 
-.keycap:active {
-  transform: translateY(8px);
-  width: 76px;
-}
-
 .keycap.orange {
   background: linear-gradient(180deg, #bd6200, #723000) !important;
 }
@@ -68,6 +63,10 @@
 }
 
 .keycap.capslock-key.keycap-active {
+  color: var(--red) !important;
+}
+
+.keycap.fn-key.keycap-active {
   color: var(--red) !important;
 }
 

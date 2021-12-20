@@ -10,6 +10,7 @@
   overflow: hidden;
   transition: 0.15s;
   width: calc(80px * 16);
+  margin: auto;
 }
 
 .case.white {
@@ -44,6 +45,10 @@
   color: var(--purple);
 }
 
+.case.transparent {
+  color: var(--transparent) !important;
+}
+
 .case::before {
   content: "";
   position: absolute;
@@ -64,8 +69,9 @@
 }
 
 .phrase {
-  margin-top: 64px;
+  margin: 64px auto;
   text-align: center;
+  max-width: calc(80px * 16);
 }
 
 .phrase i {

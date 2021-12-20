@@ -3,19 +3,29 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import KeycapView from './KeycapView';
+import { LightColorContext } from '../KeyboardView';
+
+const sound = new Audio('/sound/gateron-blue.mp3');
 
 const KeycapContainer = props => {
-  const { code, onKeyPress } = props
+  const { code, onKeyPress, onMouseDown } = props;
+  const { isFNActive, setIsFNActive, handleChangeKeyboardColor } = React.useContext(LightColorContext);
   const [isKeydown, setIsKeydown] = useState(false);
   const [isCapslockActive, setIsCapslockActive] = useState(false);
 
   const handleKeyDown = (e) => {
+    sound?.play?.()
     if (e.code === code) {
       setIsKeydown(true)
-      onKeyPress(e)
+      onKeyPress?.(e)
     }
     if (e.code === 'CapsLock') {
       setIsCapslockActive(true)
+    }
+    // Handle change light color
+    // when pressing arrow left or right
+    if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
+      handleChangeKeyboardColor(code)
     }
   };
 
@@ -27,6 +37,24 @@ const KeycapContainer = props => {
       setIsCapslockActive(false)
     }
   };
+
+  const handleMouseDown = (e) => {
+    setIsKeydown(true)
+    onMouseDown?.()
+    sound?.play?.()
+    if (code === 'FN') {
+      setIsFNActive(!isFNActive)
+    }
+    // Handle change light color
+    // when clicking arrow left or right
+    if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
+      handleChangeKeyboardColor(code)
+    }
+  }
+
+  const handleMouseUp = () => {
+    setIsKeydown(false)
+  }
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
@@ -40,7 +68,10 @@ const KeycapContainer = props => {
 
   const viewProps = {
     ...props,
-    isCapslockActive,
+    handleMouseDown,
+    handleMouseUp,
+    isCapslockActive: isCapslockActive && code === 'CapsLock',
+    isFNActive: isFNActive && code === 'FN',
     isKeydown,
   };
   return (
@@ -57,8 +88,8 @@ KeycapContainer.propTypes = {
     PropTypes.array,
   ]),
   labelClassName: PropTypes.string,
-  onClick: PropTypes.func,
   onKeyPress: PropTypes.func,
+  onMouseDown: PropTypes.func,
 };
 
 export default KeycapContainer;

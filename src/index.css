@@ -15,11 +15,14 @@
   --blue: blue;
   --turquoise: turquoise;
   --purple: purple;
+  --transparent: rgb(255, 255, 255, 0.3);
+  --keycap-width: calc(60px);
+  --keycap-height: calc(70px);
 }
 
 body {
   background: #2c2c2c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+@media only screen and (max-width: 425px) {
 }

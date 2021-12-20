@@ -5,14 +5,21 @@ import './Keycap.css';
 
 const KeycapView = ({
   className = '',
-  isKeydown,
   isCapslockActive,
+  isFNActive,
+  isKeydown,
   label,
   labelClassName,
-  onMouseDown,
+  handleMouseDown,
+  handleMouseUp,
 }) => {
   return (
-    <button className={`keycap ${className} ${isKeydown ? 'active' : ''} ${isCapslockActive ? 'keycap-active' : ''}`} onMouseDown={onMouseDown}>
+    <button
+      className={`keycap ${className} ${isKeydown ? 'active' : ''} ${isCapslockActive || isFNActive ? 'keycap-active' : ''}`}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      type="button"
+    >
       {Array.isArray(label) ? (
         label.map(labelItem => (
           <i className={labelClassName} key={labelItem}>{labelItem}</i>
@@ -26,15 +33,17 @@ const KeycapView = ({
 
 KeycapView.propTypes = {
   className: PropTypes.string,
-  isKeydown: PropTypes.bool,
   isCapslockActive: PropTypes.bool,
+  isFNActive: PropTypes.bool,
+  isKeydown: PropTypes.bool,
   label: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
     PropTypes.array,
   ]),
   labelClassName: PropTypes.string,
-  onClick: PropTypes.func,
+  handleMouseDown: PropTypes.func,
+  handleMouseUp: PropTypes.func,
 };
 
 export default KeycapView;
