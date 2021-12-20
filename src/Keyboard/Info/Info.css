@@ -38,6 +38,7 @@
   right: 50%;
   transform: translate(50%, 50%);
   color: #000;
+  max-width: 500px;
 }
 
 .info-popup ul {
