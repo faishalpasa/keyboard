@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import KeycapView from './KeycapView';
@@ -13,35 +12,42 @@ const KeycapContainer = props => {
   const [isKeydown, setIsKeydown] = useState(false);
   const [isCapslockActive, setIsCapslockActive] = useState(false);
 
-  const handleKeyDown = (e) => {
-    sound?.play?.()
-    if (e.code === code) {
-      setIsKeydown(true)
-      onKeyPress?.(e)
+  const playSound = () => {
+    if (sound) {
+      sound.currentTime = 0
+      sound.play()
     }
-    if (e.code === 'CapsLock') {
-      setIsCapslockActive(true)
-    }
-    // Handle change light color
-    // when pressing arrow left or right
-    if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
-      handleChangeKeyboardColor(code)
-    }
-  };
+  }
 
-  const handleKeyDownReset = (e) => {
+  const handleKeyDown = useCallback((e) => {
+    if (e.code === code) {
+        playSound()
+        setIsKeydown(true)
+        onKeyPress?.(e)
+      }
+      if (e.code === 'CapsLock') {
+        setIsCapslockActive(true)
+      }
+      // Handle change light color
+      // when pressing arrow left or right
+      if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
+        handleChangeKeyboardColor(code)
+      }
+  }, [code, handleChangeKeyboardColor, isFNActive, onKeyPress]);
+
+  const handleKeyDownReset = useCallback((e) => {
     if (e.code === code) {
       setIsKeydown(false)
     }
     if (e.code === 'CapsLock') {
       setIsCapslockActive(false)
     }
-  };
+  }, [code]);
 
   const handleMouseDown = (e) => {
     setIsKeydown(true)
     onMouseDown?.()
-    sound?.play?.()
+    playSound()
     if (code === 'FN') {
       setIsFNActive(!isFNActive)
     }
@@ -50,7 +56,7 @@ const KeycapContainer = props => {
     if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
       handleChangeKeyboardColor(code)
     }
-  }
+  };
 
   const handleMouseUp = () => {
     setIsKeydown(false)
@@ -64,7 +70,7 @@ const KeycapContainer = props => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('keyup', handleKeyDownReset)
     }
-  }, [])
+  }, [handleKeyDown, handleKeyDownReset]);
 
   const viewProps = {
     ...props,

@@ -40,37 +40,44 @@
   color: var(--transparent) !important;
 }
 
-.phrase i {
+.phrase pre {
   font-style: normal;
   color: inherit;
   position: relative;
   font-size: 32px;
   transition: 0.25s;
+  /* width: fit-content; */
+  margin: auto;
+  max-width: calc(80px * 16);
 }
 
-.case ~ .phrase i.text {
+.case ~ .phrase pre.text {
   color: inherit;
 }
 
-.phrase i.placeholder {
-  border-left: 0.15em solid #ffffff;
-  white-space: nowrap;
-  animation: blink-caret 1s step-end infinite;
+.phrase pre.placeholder {
+  word-wrap: break-word;
+  white-space: break-spaces;
   color: rgb(255, 255, 255, 0.2) !important;
 }
 
-.phrase i.text {
-  border-right: 0.15em solid #ffffff;
-  white-space: nowrap;
+.phrase pre.text {
+  white-space: break-spaces;
+  word-wrap: break-word;
+}
+
+.phrase pre .caret {
+  font-style: normal;
+  color: #ffffff;
   animation: blink-caret 1s step-end infinite;
 }
 
 @keyframes blink-caret {
   from,
   to {
-    border-color: transparent;
+    color: transparent;
   }
   50% {
-    border-color: #ffffff;
+    color: #ffffff;
   }
 }

@@ -41,7 +41,11 @@ const KeyboardContainer = () => {
 
   const handleKeyPress = (e) => {
     if (ACCEPTED_KEY_CODES.includes(e?.code) && !e.altKey && !e.metaKey) {
-      setPhrase((phrase) => phrase + e.key)
+      if (e.code === 'Space' && phrase[phrase.length - 1] === ' ') {
+        setPhrase((phrase) => phrase)
+      } else {
+        setPhrase((phrase) => phrase + e.key)
+      }
     }
     if (e.code === 'Backspace') {
       setPhrase((phrase) => phrase.slice(0, -1))
