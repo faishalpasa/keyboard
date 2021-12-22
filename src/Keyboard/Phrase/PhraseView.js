@@ -7,7 +7,6 @@ const PLACEHOLDER = 'Type something...'
 
 const PhraseView = ({ data }) => {
   const { color } = useContext(LightColorContext);
-  console.log(data)
   return (
     <div className={`phrase ${color}`}>
       <pre className={data ? 'text' : 'placeholder'}>

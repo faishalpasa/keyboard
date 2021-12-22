@@ -46,7 +46,6 @@
   position: relative;
   font-size: 32px;
   transition: 0.25s;
-  /* width: fit-content; */
   margin: auto;
   max-width: calc(80px * 16);
 }
