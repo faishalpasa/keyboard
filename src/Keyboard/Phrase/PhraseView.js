@@ -10,7 +10,11 @@ const PhraseView = ({ data }) => {
   return (
     <div className={`phrase ${color}`}>
       <pre className={data ? 'text' : 'placeholder'}>
-        {data || PLACEHOLDER}<i className="caret">|</i>
+        {!!data ? (
+          <>{data}<i className="caret">|</i></>
+        ) : (
+          <><i className="caret">|</i>{PLACEHOLDER}</>
+        )}
       </pre>
     </div>
   );
