@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import KeyboardView from './KeyboardView';
+import KeyboardView from './KeyboardView'
 
-const COLOR_LIST = ['white', 'red', 'orange', 'yellow', 'green', 'blue', 'turquoise', 'purple'];
+const COLOR_LIST = ['white', 'red', 'orange', 'yellow', 'green', 'blue', 'turquoise', 'purple']
 const ACCEPTED_KEY_CODES = [
   'Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0','Minus', 'Equal',
   'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Backslash',
   'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote',
   'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash',
   'Space',
-];
+]
 
 const KeyboardContainer = () => {
-  const [color, setColor] = useState(COLOR_LIST[0]);
-  const [phrase, setPhrase] = useState('');
-  const [isFNActive, setIsFNActive] = useState(false);
-  const [isLightOn, setIsLightOn] = useState(true);
+  const [color, setColor] = useState(COLOR_LIST[0])
+  const [phrase, setPhrase] = useState('')
+  const [isFNActive, setIsFNActive] = useState(false)
+  const [isLightOn, setIsLightOn] = useState(true)
 
   const handleChangeKeyboardColor = (keyCode) => {
     const colorIndex = COLOR_LIST.indexOf(color)
@@ -33,10 +33,10 @@ const KeyboardContainer = () => {
         setColor(COLOR_LIST[colorIndex + 1])
       }
     }
-  };
+  }
 
   const handleToggleKeyboardLight = () => {
-    setIsLightOn(!isLightOn);
+    setIsLightOn(!isLightOn)
   }
 
   const handleKeyPress = (e) => {
@@ -66,9 +66,9 @@ const KeyboardContainer = () => {
     handleKeyPress,
     isLightOn,
     phrase,
-  };
+  }
 
-  return <KeyboardView {...viewProps} />;
-};
+  return <KeyboardView {...viewProps} />
+}
 
-export default KeyboardContainer;
+export default KeyboardContainer

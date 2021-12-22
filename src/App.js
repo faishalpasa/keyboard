@@ -1,13 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import Keyboard from './Keyboard'
+import Keyboard from 'components/Keyboard'
 
-const App = () => {
-  return (
-    <div className="keyboard-wrapper">
-      <Keyboard />
-    </div>
-  )
-}
+const App = () => (
+  <div className="keyboard-wrapper">
+    <Keyboard />
+  </div>
+)
 
-export default App;
+export default App

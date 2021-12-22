@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useContext, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState, useContext, useCallback } from 'react'
+import PropTypes from 'prop-types'
 
-import KeycapView from './KeycapView';
-import { LightColorContext } from '../KeyboardView';
+import KeycapView from './KeycapView'
+import { LightColorContext } from 'components/Keyboard/KeyboardView'
 
-const sound = new Audio('/sound/gateron-blue.mp3');
+const sound = new Audio('/sound/gateron-blue.mp3')
 
 const KeycapContainer = props => {
-  const { code, onKeyPress, onMouseDown } = props;
-  const { isFNActive, setIsFNActive, handleChangeKeyboardColor } = useContext(LightColorContext);
-  const [isKeydown, setIsKeydown] = useState(false);
-  const [isCapslockActive, setIsCapslockActive] = useState(false);
+  const { code, onKeyPress, onMouseDown } = props
+  const { isFNActive, setIsFNActive, handleChangeKeyboardColor } = useContext(LightColorContext)
+  const [isKeydown, setIsKeydown] = useState(false)
+  const [isCapslockActive, setIsCapslockActive] = useState(false)
 
   const playSound = () => {
     if (sound) {
@@ -21,19 +21,19 @@ const KeycapContainer = props => {
 
   const handleKeyDown = useCallback((e) => {
     if (e.code === code) {
-        playSound()
-        setIsKeydown(true)
-        onKeyPress?.(e)
-      }
-      if (e.code === 'CapsLock') {
-        setIsCapslockActive(true)
-      }
-      // Handle change light color
-      // when pressing arrow left or right
-      if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
-        handleChangeKeyboardColor(code)
-      }
-  }, [code, handleChangeKeyboardColor, isFNActive, onKeyPress]);
+      playSound()
+      setIsKeydown(true)
+      onKeyPress?.(e)
+    }
+    if (e.code === 'CapsLock') {
+      setIsCapslockActive(true)
+    }
+    // Handle change light color
+    // when pressing arrow left or right
+    if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
+      handleChangeKeyboardColor(code)
+    }
+  }, [code, handleChangeKeyboardColor, isFNActive, onKeyPress])
 
   const handleKeyDownReset = useCallback((e) => {
     if (e.code === code) {
@@ -42,7 +42,7 @@ const KeycapContainer = props => {
     if (e.code === 'CapsLock') {
       setIsCapslockActive(false)
     }
-  }, [code]);
+  }, [code])
 
   const handleMouseDown = (e) => {
     setIsKeydown(true)
@@ -56,7 +56,7 @@ const KeycapContainer = props => {
     if (isFNActive && (code === 'ArrowLeft' || code === 'ArrowRight')) {
       handleChangeKeyboardColor(code)
     }
-  };
+  }
 
   const handleMouseUp = () => {
     setIsKeydown(false)
@@ -70,7 +70,7 @@ const KeycapContainer = props => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('keyup', handleKeyDownReset)
     }
-  }, [handleKeyDown, handleKeyDownReset]);
+  }, [handleKeyDown, handleKeyDownReset])
 
   const viewProps = {
     ...props,
@@ -79,11 +79,11 @@ const KeycapContainer = props => {
     isCapslockActive: isCapslockActive && code === 'CapsLock',
     isFNActive: isFNActive && code === 'FN',
     isKeydown,
-  };
+  }
   return (
     <KeycapView {...viewProps} />
-  );
-};
+  )
+}
 
 KeycapContainer.propTypes = {
   className: PropTypes.string,
@@ -96,6 +96,6 @@ KeycapContainer.propTypes = {
   labelClassName: PropTypes.string,
   onKeyPress: PropTypes.func,
   onMouseDown: PropTypes.func,
-};
+}
 
-export default KeycapContainer;
+export default KeycapContainer

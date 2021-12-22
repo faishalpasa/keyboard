@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState, useEffect } from 'react'
 import {
   Info as InfoIcon,
   EmojiObjects as EmojiObjectsIcon,
   KeyboardArrowRight as KeyboardArrowRightIcon,
   KeyboardArrowLeft as KeyboardArrowLeftIcon,
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 
-import './Info.css';
+import './Info.css'
 
 const InfoView = () => {
-  const [isPopupActive, setIsPopupActive] = useState(false);
+  const [isPopupActive, setIsPopupActive] = useState(false)
 
   const handleKeyDown = (e) => {
     if (e.code === 'Escape') {
       setIsPopupActive(false)
     }
-  };
+  }
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
@@ -23,7 +25,7 @@ const InfoView = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, []);
+  }, [])
 
   return (
     <div className="info-wrapper">
@@ -44,7 +46,7 @@ const InfoView = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default InfoView;
+export default InfoView
