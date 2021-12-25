@@ -34,24 +34,25 @@ const KeyboardView = ({
         <Keycap label="F2" />
         <Keycap label="F3" />
         <Keycap label="F4" />
-        <Keycap label="F5" />
-        <Keycap label="F6" />
-        <Keycap label="F7" />
-        <Keycap label="F8" />
-        <Keycap label="F9" />
+        <Keycap label="F5" className="light-grey" />
+        <Keycap label="F6" className="light-grey" />
+        <Keycap label="F7" className="light-grey" />
+        <Keycap label="F8" className="light-grey" />
+        <Keycap label="F9" className="light-grey" />
         <Keycap label="F10" />
         <Keycap label="F11" />
         <Keycap label="F12" />
-        <Keycap label={<CropIcon fontSize="inherit" />} />
-        <Keycap label="del" />
+        <Keycap label={<CropIcon fontSize="inherit" />} className="light-grey" />
+        <Keycap label="del" className="light-grey" />
         <Keycap
+          className="light-grey"
           label={<EmojiObjectsIcon fontSize="inherit" />}
           onMouseDown={handleToggleKeyboardLight}
         />
       </div>
 
       <div className="row">
-        <Keycap onKeyPress={handleKeyPress} label="` ~" code="Backquote" />
+        <Keycap onKeyPress={handleKeyPress} className="light-grey" label="` ~" code="Backquote" />
         <Keycap onKeyPress={handleKeyPress} label="1 !" code="Digit1" />
         <Keycap onKeyPress={handleKeyPress} label="2 @" code="Digit2" />
         <Keycap onKeyPress={handleKeyPress} label="3 #" code="Digit3" />
@@ -66,13 +67,13 @@ const KeyboardView = ({
         <Keycap onKeyPress={handleKeyPress} label="= +" code="Equal" />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="flex1"
+          className="flex1 light-grey"
           code="Backspace"
           label={<KeyboardBackspaceIcon className="icon" />}
         />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="page-up-key"
+          className="page-up-key light-grey"
           code="PageUp"
           label={['page', 'up']}
           labelClassName="font-small"
@@ -82,7 +83,7 @@ const KeyboardView = ({
       <div className="row">
         <Keycap
           onKeyPress={handleKeyPress}
-          className="flex1"
+          className="flex1 light-grey"
           code="Tab"
           label="tab"
           labelClassName="font-small"
@@ -103,11 +104,11 @@ const KeyboardView = ({
           onKeyPress={handleKeyPress}
           label="\ |"
           code="Backslash"
-          className="flex1"
+          className="flex1 light-grey"
         />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="page-down-key"
+          className="page-down-key light-grey"
           code="PageDown"
           label={['page', 'down']}
           labelClassName="font-small"
@@ -117,7 +118,7 @@ const KeyboardView = ({
       <div className="row">
         <Keycap
           onKeyPress={handleKeyPress}
-          className="capslock-key"
+          className="capslock-key light-grey"
           code="CapsLock"
           label="capslock"
           labelClassName="font-small"
@@ -135,11 +136,12 @@ const KeyboardView = ({
         <Keycap onKeyPress={handleKeyPress} label={"' \""} code="Quote" />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="flex1"
+          className="flex1 light-grey"
           code="Enter"
           label={<KeyboardReturnIcon className="icon" />}
         />
         <Keycap
+          className="light-grey"
           onKeyPress={handleKeyPress}
           code="Home"
           label="home"
@@ -150,7 +152,7 @@ const KeyboardView = ({
       <div className="row">
         <Keycap
           onKeyPress={handleKeyPress}
-          className="flex1"
+          className="flex1 light-grey"
           code="ShiftLeft"
           label="shift"
           labelClassName="font-small"
@@ -167,7 +169,7 @@ const KeyboardView = ({
         <Keycap onKeyPress={handleKeyPress} label="/ ?" code="Slash" />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="right-shift-key"
+          className="right-shift-key light-grey"
           code="ShiftRight"
           label="shift"
           labelClassName="font-small"
@@ -178,6 +180,7 @@ const KeyboardView = ({
           code="ArrowUp"
         />
         <Keycap
+          className="light-grey"
           onKeyPress={handleKeyPress}
           label="end"
           code="End"
@@ -188,21 +191,21 @@ const KeyboardView = ({
       <div className="row">
         <Keycap
           onKeyPress={handleKeyPress}
-          className="control-key"
+          className="control-key light-grey"
           code="ControlLeft"
           label="control"
           labelClassName="font-small"
         />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="option-key"
+          className="option-key light-grey"
           code="AltLeft"
           label="opt"
           labelClassName="font-small"
         />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="command-key"
+          className="command-key light-grey"
           code="MetaLeft"
           label="cmd"
           labelClassName="font-small"
@@ -215,6 +218,7 @@ const KeyboardView = ({
           labelClassName="font-small"
         />
         <Keycap
+          className="light-grey"
           onKeyPress={handleKeyPress}
           label="cmd"
           code="MetaRight"
@@ -222,14 +226,14 @@ const KeyboardView = ({
         />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="fn-key"
+          className="fn-key light-grey"
           label="fn"
           code="FN"
           labelClassName="font-small"
         />
         <Keycap
           onKeyPress={handleKeyPress}
-          className="control-key"
+          className="control-key light-grey"
           code="ControlRight"
           label="control"
           labelClassName="font-small"
